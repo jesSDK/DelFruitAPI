@@ -40,32 +40,7 @@ namespace DelfruitAPI
                     return temp;
                 }
                 
-            }
-
-
-            public static String roll(string url, string gamename)
-            {
-                Console.WriteLine("Delfruit API - Getting random game!");
-                HtmlWeb hweb = new HtmlWeb();
-                HtmlDocument doc;
-                url = "";
-                gamename = "";
-                try
-                {
-                    doc = hweb.Load("http://www.delicious-fruit.com/ratings/game_details.php?random=1");
-                    hweb.ResponseUri.AbsolutePath.ToString();
-                    url = hweb.ResponseUri.AbsolutePath.ToString();
-                    return url;
-                    foreach (HtmlNode gametitle in doc.DocumentNode.SelectNodes("//h1[@style='word-wrap: break-word;']"))
-                    {
-                        gamename = gametitle.InnerText.ToString();
-                        return gamename;
-                    }
-                }catch(Exception ex)
-                {
-                    return ex.ToString();
-                }
-            }
+            }           
         }
     }
 }
