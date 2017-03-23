@@ -11,6 +11,19 @@ namespace DelfruitAPI
 {
    public class roll
     {
+        public static StringCollection screenshots(StringCollection screens, string url)
+        {
+            HtmlWeb hweb = new HtmlWeb();
+            HtmlDocument doc3;
+            doc3 = hweb.Load(url);
+
+            
+            foreach (HtmlNode screenshotwp in doc3.DocumentNode.SelectNodes("//h1"))
+            {
+                screens.Add("HELLO");
+            }
+                return screens;
+        }
         public static StringCollection getgame(StringCollection game)
         {
             Console.WriteLine("Delfruit API - Getting random game!");
@@ -21,13 +34,14 @@ namespace DelfruitAPI
             string url = "";
             try
             {
-                //If we grab difficulty and rating, for pulling a specific string use <name of your stringcollection>[<index_number>]
+                //For pulling a specific string use <name of your stringcollection>[<index_number>]
                 /////////////////////
                 //  INDEX NUMBERS  //
                 //     0 - URL     //
                 //  1 - GameName   //
                 //   2 - Rating    //
                 // 3 - Difficulty  //
+                //  4 - Download   //
                 /////////////////////
                 //load random game webpage
                 doc = hweb.Load("http://www.delicious-fruit.com/ratings/game_details.php?random=1");
