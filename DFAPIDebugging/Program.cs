@@ -20,9 +20,8 @@ namespace DFAPIDebugging
             Console.WriteLine("Printing game info");
             StringCollection game = new StringCollection();
             DelfruitAPI.roll.getgame(game);
-            //prints all info
             //print seperate info
-            Console.WriteLine("Game name: " + game[1] + "\r\n" + "Game Difficulty: " + game[3] + "\r\n" + "Game Rating: " + game[2] );
+            Console.WriteLine("Game name: " + game[1] + "\r\n" + "Game Difficulty: " + game[3] + "\r\n" + "Game Rating: " + game[2] + "\r\n" + "game download: " + game[4]);
             Console.ReadKey();
 
         }

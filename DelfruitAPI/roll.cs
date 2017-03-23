@@ -16,6 +16,7 @@ namespace DelfruitAPI
             Console.WriteLine("Delfruit API - Getting random game!");
             HtmlWeb hweb = new HtmlWeb();
             HtmlDocument doc;
+            HtmlDocument doc2;
             string gamename = "";
             string url = "";
             try
@@ -56,6 +57,15 @@ namespace DelfruitAPI
                 foreach (HtmlNode diff in doc.DocumentNode.SelectNodes("//div[@class='rating']/div/span[@id='avgDifficulty']"))
                 {
                     game.Add(diff.InnerText.ToString());
+                }
+                //get direct download URL, this is gonna need some redirects
+                foreach(HtmlNode dfdownload in doc.DocumentNode.SelectNodes("//a[@class='standalone']"))
+                {
+                    doc2 = hweb.Load(dfdownload.Attributes["href"].Value.ToString());
+                    foreach(HtmlNode wikidl in doc2.DocumentNode.SelectNodes("//div[@id='wikibody']/div/a"))
+                    {
+                        game.Add(wikidl.InnerText.ToString());
+                    }
                 }
                 return game;
             }
