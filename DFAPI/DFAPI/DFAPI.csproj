@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD6B3F70-0858-4456-979C-C59557E066DE}</ProjectGuid>
+    <ProjectGuid>{43A9E6D3-F422-4ABA-A19E-148757FFBA81}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DFAPIDebugging</RootNamespace>
-    <AssemblyName>DFAPIDebugging</AssemblyName>
+    <RootNamespace>DFAPI</RootNamespace>
+    <AssemblyName>DFAPI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,12 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DelfruitAPI\DelfruitAPI.csproj">
-      <Project>{af68ad8d-39cf-45b0-b02f-3278e1026e6c}</Project>
-      <Name>DelfruitAPI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
