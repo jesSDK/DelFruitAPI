@@ -48,11 +48,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DelfruitAPI\DelfruitAPI.csproj">
-      <Project>{af68ad8d-39cf-45b0-b02f-3278e1026e6c}</Project>
-      <Name>DelfruitAPI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
