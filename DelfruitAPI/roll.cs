@@ -6,24 +6,13 @@ using System.Net;
 using System.Text;
 using HtmlAgilityPack;
 using System.Collections.Specialized;
+using System.Net.Http;
 
 namespace DelfruitAPI
 {
    public class roll
     {
-        public static StringCollection screenshots(StringCollection screens, string url)
-        {
-            HtmlWeb hweb = new HtmlWeb();
-            HtmlDocument doc3;
-            doc3 = hweb.Load(url);
-
-            
-            foreach (HtmlNode screenshotwp in doc3.DocumentNode.SelectNodes("//h1"))
-            {
-                screens.Add("HELLO");
-            }
-                return screens;
-        }
+        
         public static StringCollection getgame(StringCollection game)
         {
             Console.WriteLine("Delfruit API - Getting random game!");
@@ -87,6 +76,33 @@ namespace DelfruitAPI
             {
                 return null;
             }
+        }
+        public static StringCollection screenshots(StringCollection screenshots, string url)
+        {
+
+            HttpClient client = new HttpClient();
+            WebClient webClient = new WebClient();
+            var result = client.GetStringAsync(url).Result;
+            var doc = new HtmlDocument();
+            webClient.DownloadFile(url, "df.txt");
+            doc.LoadHtml(System.IO.File.ReadAllText("df.txt"));
+            foreach (HtmlNode screenshota in doc.DocumentNode.SelectNodes("//ul[@class='jcarousel-skin-pika']/li/a"))
+            {
+                //screenshots.Add("http://delicious-fruit.com" + screenshota.Attributes["href"].Value.ToString());
+                string suburl = "http://delicious-fruit.com" + screenshota.Attributes["href"].Value.ToString();
+                HtmlDocument docHtml = new HtmlWeb().Load(suburl);
+                try {
+                    foreach (HtmlNode image in docHtml.DocumentNode.SelectNodes("//div[@id='content']/img"))
+                    {
+                        screenshots.Add("http://delicious-fruit.com" + image.Attributes["src"].Value.ToString());
+                    }
+                }catch(System.NullReferenceException ex)
+                {
+                    screenshots.Clear();
+                }
+                }
+            return screenshots;
+
         }
     }
 }

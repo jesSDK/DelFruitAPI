@@ -19,16 +19,20 @@ namespace DFAPIDebugging
             Console.WriteLine(DF.web.Getmotd(motd));
             Console.WriteLine("Printing game info");
             StringCollection game = new StringCollection();
-            StringCollection screens = new StringCollection();
+            StringCollection screenshots = new StringCollection();
             DelfruitAPI.roll.getgame(game);
             Console.WriteLine(game[0]);
             Console.Read();
             url = game[0];
+            roll.screenshots(screenshots, url);
+            foreach (string screens in screenshots)
+            {
+                Console.WriteLine("screens: " + screens);
+            }
+            Console.Read();
             //print seperate info
-            Console.WriteLine("Game name: " + game[1] + "\r\n" + "Game Difficulty: " + game[3] + "\r\n" + "Game Rating: " + game[2] + "\r\n" + "game download: " + game[4]);
-            Console.WriteLine("screens: " + roll.screenshots(screens, url));
-            Console.ReadKey();
-
+            Console.WriteLine("Game name: " + game[1] + "\r\n" + "Game Difficulty: " + game[3] + "\r\n" + "Game Rating: " + game[2] + "\r\n" + "game download: " + game[4] );
+            Console.Read();
         }
     }
 }
